@@ -1,14 +1,14 @@
-﻿@*
+﻿@* 
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@model IEnumerable<Intern.Models.BK_KTCC>
+@model IEnumerable<int>
 
 <div class="container">
 
     @* Table header start *@
     <div class="row bg-primary text-white">
         @{
-            Type t = typeof(Intern.Models.BK_KTCC);
+            Type t = typeof(int);
         }
         @foreach (var prop in t.GetProperties())
         {
@@ -42,5 +42,5 @@
         </div>
 
     }
-    @* Table record end*@
+    @* Table record end *@
 </div>

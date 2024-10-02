@@ -1,0 +1,72 @@
+﻿@model IEnumerable<ThucTap_1.Models.BkKtcc>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NgayKt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NguoiKt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NguoiDuocKt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KhoaKt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoHs)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TongDiem)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.XepLoai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NhanXet)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayKt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NguoiKt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NguoiDuocKt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KhoaKt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoHs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TongDiem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.XepLoai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NhanXet)
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Id">Print</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

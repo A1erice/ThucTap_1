@@ -1,0 +1,46 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model IEnumerable<Intern.Models.BK_KTCC>
+
+<div class="container">
+
+    @* Table header start *@
+    <div class="row bg-primary text-white">
+        @{
+            Type t = typeof(Intern.Models.BK_KTCC);
+        }
+        @foreach (var prop in t.GetProperties())
+        {
+            <div class="col">
+                @prop.Name
+            </div>
+        }
+        <div class="col">In</div>
+        @* Table header end *@
+    </div>
+
+    @* Table record start*@
+    @foreach (var item in Model)
+    {
+        <div class="row">
+            @foreach (var prop in item.GetType().GetProperties())
+            {
+                <div class="col">
+                    @{
+                        if (prop != null)
+                        {
+                            prop.GetValue(item, null).ToString();
+                        }
+                    }
+                </div>
+            }
+
+            <button class="btn">
+                <img src="~/image/icon/printer.png" />
+            </button>
+        </div>
+
+    }
+    @* Table record end*@
+</div>

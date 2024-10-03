@@ -1,0 +1,120 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model IEnumerable<ThucTap_1.Models.BkKtcc>
+
+<div class="container overflow-scroll max-vh-75">
+    <table class="table table-primary table-striped">
+
+        @* Table header start *@
+        <thead>
+            <tr>
+                @{
+                    Type t = typeof(ThucTap_1.Models.BkKtcc);
+                }
+                @foreach (var prop in t.GetProperties())
+                {
+                    <th scope="col">
+                        @prop.Name
+                    </th>
+                }
+                <th scope="col">In</th>
+            </tr>
+        </thead>
+        @* Table header end *@
+
+        @* Table record start*@
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Id.ToString()
+                    </td>
+                    <td>
+                        @(item.NgayKt != null ? item.NgayKt : "")
+                    </td>
+                    <td>
+                        @(item.NguoiKt != null ? item.NguoiKt : "")
+                    </td>
+                    <td>
+                        @(item.NguoiDuocKt != null ? item.NguoiDuocKt : "")
+                    </td>
+                    <td>
+                        @(item.KhoaKt != null ? item.KhoaKt : "")
+                    </td>
+                    <td>
+                        @(item.SoHs != null ? item.SoHs : "")
+                    </td>
+                    <td>
+                        @(item.A11 != null ? item.A11 : "")
+                    </td>
+                    <td>
+                        @(item.A12 != null ? item.A12 : "")
+                    </td>
+                    <td>
+                        @(item.A13 != null ? item.A13 : "")
+                    </td>
+                    <td>
+                        @(item.A21 != null ? item.A21 : "")
+                    </td>
+                    <td>
+                        @(item.A22 != null ? item.A22 : "")
+                    </td>
+                    <td>
+                        @(item.A23 != null ? item.A23 : "")
+                    </td>
+                    <td>
+                        @(item.B3 != null ? item.B3 : "")
+                    </td>
+                    <td>
+                        @(item.B4 != null ? item.B4 : "")
+                    </td>
+                    <td>
+                        @(item.B5 != null ? item.B5 : "")
+                    </td>
+                    <td>
+                        @(item.B6a != null ? item.B6a : "")
+                    </td>
+                    <td>
+                        @(item.B6b != null ? item.B6b : "")
+                    </td>
+                    <td>
+                        @(item.B7 != null ? item.B7 : "")
+                    </td>
+                    <td>
+                        @(item.C81 != null ? item.C81 : "")
+                    </td>
+                    <td>
+                        @(item.C82 != null ? item.C82 : "")
+                    </td>
+                    <td>
+                        @(item.C9 != null ? item.C9 : "")
+                    </td>
+                    <td>
+                        @(item.C10 != null ? item.C10 : "")
+                    </td>
+                    <td>
+                        @(item.C11 != null ? item.C11 : "")
+                    </td>
+                    <td>
+                        @(item.TongDiem != null ? item.TongDiem : "")
+                    </td>
+                    <td>
+                        @(item.XepLoai != null ? item.XepLoai : "")
+                    </td>
+                    <td>
+                        @(item.NhanXet != null ? item.NhanXet : "")
+                    </td>
+                    <td>
+                        <a asp-controller="BkKtccs" asp-action="Print" asp-route-id=@item.Id>
+                            <img src="~/image/icon/printer.png" style="max-width: 40px"/>
+                        </a>
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+        @* Table record end*@
+    </table>
+</div>

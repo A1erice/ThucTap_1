@@ -51,6 +51,28 @@ namespace ThucTap_1.Controllers
             return View();
         }
 
+        public async Task<IActionResult> List()
+        {
+            return View(await _context.BkKtccs.ToListAsync());
+        }
+
+        public async Task<IActionResult> Print(int? id)
+        {
+            if (id == null || _context.BkKtccs == null)
+            {
+                return NotFound();
+            }
+
+            var bkKtcc = await _context.BkKtccs
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (bkKtcc == null)
+            {
+                return NotFound();
+            }
+
+            return View(bkKtcc);
+        }
+
         // POST: BkKtccs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.

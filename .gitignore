@@ -361,3 +361,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/ThucTap_1/appsettings.json
+/ThucTap_1/Data/HisContext.cs

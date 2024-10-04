@@ -1,3 +1,4 @@
+using IronPdf.Extensions.Mvc.Core;
 using Microsoft.EntityFrameworkCore;
 using ThucTap_1.Data;
 
@@ -8,6 +9,12 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<HisContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ConnectionString")));
+
+
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+// Register IRazorViewRenderer here
+builder.Services.AddSingleton<IRazorViewRenderer, RazorViewRenderer>();
 
 var app = builder.Build();
 

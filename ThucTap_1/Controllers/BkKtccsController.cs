@@ -3,20 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Razor.Compilation;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ThucTap_1.Data;
 using ThucTap_1.Models;
+using IronPdf.Extensions.Mvc.Core;
 
 namespace ThucTap_1.Controllers
 {
     public class BkKtccsController : Controller
     {
         private readonly HisContext _context;
-
-        public BkKtccsController(HisContext context)
+        private readonly IRazorViewRenderer _viewRenderService;
+        public BkKtccsController(HisContext context, IRazorViewRenderer viewRenderService)
         {
             _context = context;
+            _viewRenderService = viewRenderService;
         }
 
         // GET: BkKtccs
@@ -70,7 +73,10 @@ namespace ThucTap_1.Controllers
                 return NotFound();
             }
 
-            return View(bkKtcc);
+            ChromePdfRenderer renderer = new ChromePdfRenderer();
+            PdfDocument pdf = renderer.RenderRazorViewToPdf(_viewRenderService, "./Views/BkKtccs/Print.cshtml", bkKtcc);
+            return File(pdf.BinaryData, "application/pdf", "BKKTCC.pdf");
+            //return View(bkKtcc);
         }
 
         // POST: BkKtccs/Create

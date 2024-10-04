@@ -2,30 +2,104 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 
-@model ThucTap_1.Models.BkKtcc
+@{
+    Layout = null;
+}
 
+@model ThucTap_1.Models.BkKtcc
+<style>
+    .d-flex {
+        display: flex;
+    }
+
+    .flex-column {
+        flex-direction: column;
+    }
+
+    .align-items-center {
+        align-items: center;
+    }
+
+    .justify-content-between {
+        justify-content: space-between;
+    }
+
+    .w-100 {
+        width: 100%;
+    }
+
+    .fw-bold {
+        font-weight: bold;
+    }
+
+    .align-items-start {
+        align-items: start;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    .text-left {
+        text-align: left;
+    }
+
+    .justify-content-between {
+        justify-content: space-between;
+    }
+
+    .justify-content-around {
+        justify-content: space-around;
+    }
+
+    table, td, th {
+        caption-side: bottom;
+        border-collapse: collapse;
+        border: 1px solid black;
+    }
+
+    .table-sm {
+        height: fit-content;
+    }
+
+    .gap-10 {
+        gap: 10px;
+    }
+
+    .mb-30 {
+        margin-bottom: 30px !important;
+    }
+    
+    .mb-20 {
+        margin-bottom: 20px !important;
+    }
+
+    p {
+        margin-block: 0;
+    }
+</style>
 @*Page*@
 <div class="d-flex flex-column align-items-center" style="font-family: 'Times New Roman', Times, serif; width: 210mm;">
     @* header *@
-    <div class="d-flex justify-content-between w-100">
+    <div class="d-flex justify-content-between w-100 mb-20">
 
-        <div class="d-flex flex-column align-items-center">
+        <div class="d-flex flex-column align-items-center gap-10">
             <p>SỞ Y TẾ</p>
             <p>THÀNH PHỐ HỒ CHÍ MINH</p>
             <p class="fw-bold">VIỆN Y DƯỢC HỌC DÂN TỘC</p>
         </div>
 
-        <div class="d-flex flex-column align-items-center">
+        <div class="d-flex flex-column align-items-center gap-10">
             <p class="fw-bold">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</p>
             <p class="fw-bold">Độc lập - Tự do - Hạnh phúc</p>
         </div>
 
     </div>
 
-    <p class="fw-bold">BẢNG KIỂM TUÂN THỦ QUY TRÌNH KỸ THUẬT CHÂM CỨU</p>
+    <p class="fw-bold mb-20">BẢNG KIỂM TUÂN THỦ QUY TRÌNH KỸ THUẬT CHÂM CỨU</p>
 
     @*genaral information*@
-    <div class="d-flex flex-column align-items-start w-100">
+    <div class="d-flex flex-column align-items-start w-100 mb-20">
         <p>Ngày kiểm tra: @Model.NgayKt.ToString()</p>
         <p>Người kiểm tra: @(Model.NguoiKt != null ? Model.NguoiKt : "")</p>
         <p>Người được kiểm tra: @(Model.NguoiDuocKt != null ? Model.NguoiDuocKt : "")</p>
@@ -34,7 +108,7 @@
     </div>
 
     @*Scoring table*@
-    <table class="table table-sm table-bordered border-dark">
+    <table class="table table-sm table-bordered border-dark mb-30">
         <tbody>
             <tr>
                 <td></td>
@@ -241,7 +315,7 @@
                 <td></td>
                 <td class="text-left">Tổng Điểm</td>
                 <td class="text-center">10</td>
-                <td class="text-center">@(totalA+totalB+totalC)</td>
+                <td class="text-center">@(totalA + totalB + totalC)</td>
             </tr>
 
             @* Xep loai *@
@@ -257,17 +331,17 @@
     <div class="w-100">Nhận xét: </div>
 
     @*Signature*@
-    <div class="d-flex justify-content-around w-100" style="height: 100px">
+    <div class="d-flex justify-content-around w-100" style="height: 150px">
         <div>Lãnh Đạo Khoa</div>
 
         <div class="d-flex flex-column justify-content-between">
             <div>Người kiểm tra</div>
-            <div></div>
+            <div class="text-center">@(Model.NguoiKt != null ? Model.NguoiKt : "")</div>
         </div>
 
         <div class="d-flex flex-column justify-content-between">
             <div>Người được kiểm tra</div>
-            <div></div>
+            <div class="text-center">@(Model.NguoiDuocKt != null ? Model.NguoiDuocKt : "")</div>
         </div>
     </div>
 </div>
